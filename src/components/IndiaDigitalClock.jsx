@@ -30,21 +30,30 @@ export default function IndiaDigitalClock() {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center vh-100 bg-dark">
+    <div
+      className="d-flex justify-content-center align-items-center bg-dark py-2 mx-auto"
+      style={{
+        minHeight: "12vh",
+        width: "fit-content",
+        paddingLeft: "12px",
+        paddingRight: "12px",
+      }}
+    >
       <div
         className="text-center p-4 rounded"
         style={{
           background: "#111",
           border: "5px solid #333",
           boxShadow: "0 0 20px #000 inset",
+          maxWidth: "300px",
         }}
       >
         <h1
           style={{
             fontFamily: "'Courier New', monospace",
-            fontSize: "70px",
+            fontSize: "48px",
             color: "#ff3b3b",
-            letterSpacing: "5px",
+            letterSpacing: "3px",
             textShadow: "0 0 10px red, 0 0 20px red",
           }}
         >
