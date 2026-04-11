@@ -48,6 +48,15 @@ const PALETTES = {
     boxShadow: "rgba(26, 6, 15, 0.9)",
     labelColor: "text-light",
   },
+  luxury: {
+    name: "Luxury Gold",
+    bg: "linear-gradient(180deg, rgba(199,163,90,0.06), rgba(155,107,125,0.02))",
+    text: "#e8d7a6",
+    textShadow: "rgba(199,163,90,0.22)",
+    border: "rgba(199,163,90,0.12)",
+    boxShadow: "rgba(199,163,90,0.06)",
+    labelColor: "text-light",
+  },
   minimalLight: {
     name: "Minimal Light",
     bg: "#f8fafc",
@@ -61,13 +70,13 @@ const PALETTES = {
 
 export default function IndiaDigitalClock() {
   const [time, setTime] = useState(new Date());
-  const [activeTheme, setActiveTheme] = useState("classicRed");
+  const [activeTheme, setActiveTheme] = useState("luxury");
 
   useEffect(() => {
     const interval = setInterval(() => {
       const now = new Date();
       const istTime = new Date(
-        now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" })
+        now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }),
       );
       setTime(istTime);
     }, 1000);
@@ -84,7 +93,7 @@ export default function IndiaDigitalClock() {
 
     return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(
       2,
-      "0"
+      "0",
     )}:${String(seconds).padStart(2, "0")}`;
   };
 
@@ -92,7 +101,7 @@ export default function IndiaDigitalClock() {
 
   return (
     <div
-      className="d-flex flex-column justify-content-center align-items-center bg-dark py-4 mx-auto mt-3 rounded shadow-lg"
+      className="d-flex flex-column justify-content-center align-items-center py-4 mx-auto mt-3 rounded shadow-lg"
       style={{
         minHeight: "15vh",
         width: "fit-content",
@@ -101,7 +110,10 @@ export default function IndiaDigitalClock() {
       }}
     >
       <div className="mb-4 d-flex align-items-center px-3 py-2 bg-black rounded border border-secondary shadow-sm">
-        <label htmlFor="palette-selector" className="text-white me-3 fw-bold mb-0">
+        <label
+          htmlFor="palette-selector"
+          className="text-white me-3 fw-bold mb-0"
+        >
           Color Palette:
         </label>
         <select
@@ -143,9 +155,9 @@ export default function IndiaDigitalClock() {
         >
           {formatTime()}
         </h1>
-        <p 
-          className="mt-2 mb-0 fw-bold" 
-          style={{ 
+        <p
+          className="mt-2 mb-0 fw-bold"
+          style={{
             color: currentPalette.text,
             transition: "color 0.5s ease",
             opacity: 0.8,
